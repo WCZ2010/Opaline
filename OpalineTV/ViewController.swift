@@ -56,12 +56,9 @@ final class HomeViewController: UIViewController {
 
     @objc
     private func startButtonPressed() {
-        let alert = UIAlertController(
-            title: "OpalineTV",
-            message: "tvOS UIKit 启动成功",
-            preferredStyle: .alert
+        navigationController?.pushViewController(
+            SearchViewController(),
+            animated: true
         )
-        alert.addAction(UIAlertAction(title: "完成", style: .default))
-        present(alert, animated: true)
     }
 }
