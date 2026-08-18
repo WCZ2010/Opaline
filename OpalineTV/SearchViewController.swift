@@ -26,7 +26,7 @@ final class SearchViewController: UIViewController {
 
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 520, height: 235)
+        layout.itemSize = CGSize(width: 520, height: 390)
         layout.minimumInteritemSpacing = 44
         layout.minimumLineSpacing = 44
         layout.sectionInset = UIEdgeInsets(top: 45, left: 70, bottom: 60, right: 70)
@@ -196,8 +196,18 @@ extension SearchViewController: UICollectionViewDataSource,
 private final class SearchResultCell: UICollectionViewCell {
     static let reuseIdentifier = "SearchResultCell"
 
+    private let thumbnailView: UIImageView = {
+        let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(white: 0.2, alpha: 1)
+        view.contentMode = .scaleAspectFill
+        view.clipsToBounds = true
+        return view
+    }()
     private let titleLabel = UILabel()
     private let detailLabel = UILabel()
+    private var imageTask: URLSessionDataTask?
+    private var representedVideoID: String?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -206,28 +216,43 @@ private final class SearchResultCell: UICollectionViewCell {
         contentView.layer.cornerRadius = 20
         contentView.layer.masksToBounds = true
 
-        titleLabel.font = .systemFont(ofSize: 30, weight: .semibold)
-        titleLabel.numberOfLines = 3
-        detailLabel.font = .systemFont(ofSize: 22)
+        titleLabel.font = .systemFont(ofSize: 27, weight: .semibold)
+        titleLabel.numberOfLines = 2
+        detailLabel.font = .systemFont(ofSize: 19)
         detailLabel.textColor = .secondaryLabel
-        detailLabel.numberOfLines = 2
+        detailLabel.numberOfLines = 1
 
         let stack = UIStackView(arrangedSubviews: [titleLabel, detailLabel])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.spacing = 18
+        stack.spacing = 8
+        contentView.addSubview(thumbnailView)
         contentView.addSubview(stack)
 
         NSLayoutConstraint.activate([
-            stack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 28),
-            stack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 32),
-            stack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -32),
-            stack.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -28)
+            thumbnailView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            thumbnailView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            thumbnailView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            thumbnailView.heightAnchor.constraint(equalToConstant: 292),
+            stack.topAnchor.constraint(equalTo: thumbnailView.bottomAnchor, constant: 14),
+            stack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 22),
+            stack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -22),
+            stack.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -14)
         ])
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageTask?.cancel()
+        imageTask = nil
+        representedVideoID = nil
+        thumbnailView.image = nil
+        titleLabel.text = nil
+        detailLabel.text = nil
     }
 
     override func didUpdateFocus(
@@ -245,11 +270,25 @@ private final class SearchResultCell: UICollectionViewCell {
     }
 
     func configure(with video: TVSearchVideo) {
+        representedVideoID = video.id
+        imageTask?.cancel()
+        thumbnailView.image = nil
         titleLabel.text = video.title
         detailLabel.text = [
             video.channelName,
             video.duration,
             video.viewCount
         ].compactMap { $0 }.filter { !$0.isEmpty }.joined(separator: " · ")
+
+        guard let url = video.thumbnailURL else { return }
+        let videoID = video.id
+        imageTask = URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
+            guard let data, let image = UIImage(data: data) else { return }
+            DispatchQueue.main.async {
+                guard self?.representedVideoID == videoID else { return }
+                self?.thumbnailView.image = image
+            }
+        }
+        imageTask?.resume()
     }
 }
