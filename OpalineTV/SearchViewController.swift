@@ -1,9 +1,7 @@
-import AVKit
 import UIKit
 
 final class SearchViewController: UIViewController {
     private let client = TVSearchClient()
-    private let playbackClient = TVPlaybackClient()
     private var videos: [TVSearchVideo] = []
     private var pendingSearchWorkItem: DispatchWorkItem?
 
@@ -185,42 +183,10 @@ extension SearchViewController: UICollectionViewDataSource,
         didSelectItemAt indexPath: IndexPath
     ) {
         let video = videos[indexPath.item]
-        preparePlayback(for: video)
-    }
-
-    private func preparePlayback(for video: TVSearchVideo) {
-        let loading = UIAlertController(
-            title: video.title,
-            message: "正在准备播放…",
-            preferredStyle: .alert
+        navigationController?.pushViewController(
+            VideoDetailViewController(video: video),
+            animated: true
         )
-        present(loading, animated: true)
-
-        playbackClient.preparePlayerItem(videoID: video.id) { [weak self] result in
-            guard let self else { return }
-            loading.dismiss(animated: true) {
-                switch result {
-                case .success(let item):
-                    let playerController = AVPlayerViewController()
-                    playerController.player = AVPlayer(playerItem: item)
-                    self.present(playerController, animated: true) {
-                        playerController.player?.play()
-                    }
-                case .failure(let error):
-                    self.presentPlaybackError(error)
-                }
-            }
-        }
-    }
-
-    private func presentPlaybackError(_ error: Error) {
-        let alert = UIAlertController(
-            title: "无法播放",
-            message: error.localizedDescription,
-            preferredStyle: .alert
-        )
-        alert.addAction(UIAlertAction(title: "完成", style: .default))
-        present(alert, animated: true)
     }
 }
 
