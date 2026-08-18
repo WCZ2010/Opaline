@@ -7,11 +7,19 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		324EB6B130342C0700F56448 /* OpalineTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpalineTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4940A71F2F6AD27900E6C599 /* Opaline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Opaline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1B2C3D4E5F6000123456789 /* Local.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Local.xcconfig; path = Config/Local.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		324EB6C430342C0800F56448 /* Exceptions for "OpalineTV" folder in "OpalineTV" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 324EB6B030342C0700F56448 /* OpalineTV */;
+		};
 		4940A7312F6AD27A00E6C599 /* Exceptions for "Opaline" folder in "Opaline" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -22,6 +30,14 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		324EB6B230342C0700F56448 /* OpalineTV */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				324EB6C430342C0800F56448 /* Exceptions for "OpalineTV" folder in "OpalineTV" target */,
+			);
+			path = OpalineTV;
+			sourceTree = "<group>";
+		};
 		4940A7212F6AD27900E6C599 /* Opaline */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -33,6 +49,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		324EB6AE30342C0700F56448 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4940A71C2F6AD27900E6C599 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -47,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				4940A7212F6AD27900E6C599 /* Opaline */,
+				324EB6B230342C0700F56448 /* OpalineTV */,
 				4940A7202F6AD27900E6C599 /* Products */,
 				A1B2C3D4E5F6000123456789 /* Local.xcconfig */,
 			);
@@ -56,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				4940A71F2F6AD27900E6C599 /* Opaline.app */,
+				324EB6B130342C0700F56448 /* OpalineTV.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -63,6 +88,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		324EB6B030342C0700F56448 /* OpalineTV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 324EB6C530342C0800F56448 /* Build configuration list for PBXNativeTarget "OpalineTV" */;
+			buildPhases = (
+				324EB6AD30342C0700F56448 /* Sources */,
+				324EB6AE30342C0700F56448 /* Frameworks */,
+				324EB6AF30342C0700F56448 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				324EB6B230342C0700F56448 /* OpalineTV */,
+			);
+			name = OpalineTV;
+			packageProductDependencies = (
+			);
+			productName = OpalineTV;
+			productReference = 324EB6B130342C0700F56448 /* OpalineTV.app */;
+			productType = "com.apple.product-type.application";
+		};
 		4940A71E2F6AD27900E6C599 /* Opaline */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4940A7322F6AD27A00E6C599 /* Build configuration list for PBXNativeTarget "Opaline" */;
@@ -94,9 +141,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1620;
+				LastSwiftUpdateCheck = 2660;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
+					324EB6B030342C0700F56448 = {
+						CreatedOnToolsVersion = 26.6;
+					};
 					4940A71E2F6AD27900E6C599 = {
 						CreatedOnToolsVersion = 16.2;
 					};
@@ -131,11 +181,19 @@
 			projectRoot = "";
 			targets = (
 				4940A71E2F6AD27900E6C599 /* Opaline */,
+				324EB6B030342C0700F56448 /* OpalineTV */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		324EB6AF30342C0700F56448 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4940A71D2F6AD27900E6C599 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -188,6 +246,13 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		324EB6AD30342C0700F56448 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4940A71B2F6AD27900E6C599 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -198,6 +263,70 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		324EB6C230342C0800F56448 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 35L2AGN4JX;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OpalineTV/Info.plist;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wcz.OpalineTV;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Debug;
+		};
+		324EB6C330342C0800F56448 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 35L2AGN4JX;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OpalineTV/Info.plist;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wcz.OpalineTV;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Release;
+		};
 		4940A7332F6AD27A00E6C599 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A1B2C3D4E5F6000123456789 /* Local.xcconfig */;
@@ -388,6 +517,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		324EB6C530342C0800F56448 /* Build configuration list for PBXNativeTarget "OpalineTV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				324EB6C230342C0800F56448 /* Debug */,
+				324EB6C330342C0800F56448 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4940A71A2F6AD27900E6C599 /* Build configuration list for PBXProject "Opaline" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
